@@ -1,6 +1,5 @@
 package edu.upc.eetac.dsa.asantamaria.beans;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -18,8 +17,12 @@ import javax.swing.JTextField;
  Ejemplo envia objetos
  */
 
-public class frmcliente extends JFrame implements ActionListener, Runnable {
+public class cliente extends JFrame implements ActionListener, Runnable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JTextField txtnick, txtip, txtmsg;
 	JButton btnenviar;
 	JButton btnsalir;
@@ -27,7 +30,7 @@ public class frmcliente extends JFrame implements ActionListener, Runnable {
 
 	ServerSocket servidor = null;
 
-	public frmcliente() {
+	public cliente() {
 		txtnick = new JTextField();
 		txtnick.setBounds(10, 10, 400, 20);
 
@@ -67,7 +70,7 @@ public class frmcliente extends JFrame implements ActionListener, Runnable {
 	}
 
 	public static void main(String[] args) {
-		new frmcliente();
+		new cliente();
 
 	}
 
@@ -94,7 +97,7 @@ public class frmcliente extends JFrame implements ActionListener, Runnable {
 				bean.setIp(txtip.getText());
 				bean.setMensaje(txtmsg.getText());
 				
-				txtmensajes_rx.append("\n yo: "bean.getMensaje());
+				txtmensajes_rx.append("\n yo: "+txtmsg.getText());
 				// System.out.println(bean.getMensaje());
 
 				ObjectOutputStream flujo_objetos = new ObjectOutputStream(
@@ -151,4 +154,3 @@ public class frmcliente extends JFrame implements ActionListener, Runnable {
 	}
 
 }
-
